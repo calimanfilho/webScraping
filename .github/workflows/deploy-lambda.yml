@@ -12,8 +12,10 @@ jobs:
     steps:
     # - name: Checkout code
     #   uses: actions/checkout@v3
-    - name: List Files
-      run: ls
+    - name: Verify folder
+      run: pwd
+    - name: List directory contents
+      run: ls -la
     - name: Install Plugin and Deploy
       uses: serverless/github-action@v3.2
       with:
