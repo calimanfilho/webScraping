@@ -2,19 +2,22 @@ service: web-scraping
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: python3.9  # Definido para Python 3.9, mas você pode ajustar conforme a versão necessária
   region: us-east-1
-  stage: dev
+  stage: prod
 
 functions:
-  hello:
-    handler: handler.hello
+  scraping:
+    handler: handler.scraping  # Referência para o arquivo handler.py e a função 'scraping'
 
-# Define os plugins do serverless
-plugins:
-  - serverless-webpack
-
-# Configurações de pacotes (opcional)
 package:
   exclude:
     - node_modules/**
+    - venv/**  # Exclui o diretório virtualenv (caso use)
+
+plugins:
+  - serverless-python-requirements  # Adiciona o plugin de Python para lidar com dependências
+
+custom:
+  pythonRequirements:
+    dockerizePip: true  # Usar contêiner Docker para instalar dependências nativas se necessário
