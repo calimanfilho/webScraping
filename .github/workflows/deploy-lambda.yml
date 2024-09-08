@@ -13,7 +13,10 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
+    - name: Install Serverless Python Requirements Plugin
+      run: serverless plugin install -n serverless-python-requirements
     - name: serverless deploy
       uses: serverless/github-action@v3.2
       with:
