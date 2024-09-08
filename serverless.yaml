@@ -1,0 +1,20 @@
+service: web-scraping
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-1
+  stage: dev
+
+functions:
+  hello:
+    handler: handler.hello
+
+# Define os plugins do serverless
+plugins:
+  - serverless-webpack
+
+# Configurações de pacotes (opcional)
+package:
+  exclude:
+    - node_modules/**
