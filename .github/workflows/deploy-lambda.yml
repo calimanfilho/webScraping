@@ -12,7 +12,11 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Deploy Lambda
+    - name: Set up Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+    - name: Deploy Severless
       uses: serverless/github-action@v3.2
       with:
         args: -c "serverless deploy"
