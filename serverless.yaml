@@ -19,6 +19,6 @@ functions:
 plugins:
   - serverless-python-requirements  # Adiciona o plugin de Python para lidar com dependências
 
-# custom:
-#   pythonRequirements:
-#     dockerizePip: true  # Usar contêiner Docker para instalar dependências nativas se necessário
+custom:
+  pythonRequirements:
+    dockerizePip: true  # Usar contêiner Docker para instalar dependências nativas se necessário
