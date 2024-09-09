@@ -12,10 +12,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Install Plugin and Deploy
+    - name: Deploy Lambda
       uses: serverless/github-action@v3.2
       with:
-        args: -c "serverless plugin install -n serverless-python-requirements && serverless deploy"
+        args: -c "serverless deploy"
         entrypoint: /bin/sh
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

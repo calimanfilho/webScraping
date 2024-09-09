@@ -15,10 +15,3 @@ functions:
       name: selenium-chrome-driver
     events:
       - schedule: cron(*/1 * * * ? *)
-
-plugins:
-  - serverless-python-requirements  # Adiciona o plugin de Python para lidar com dependências
-
-custom:
-  pythonRequirements:
-    dockerizePip: 'non-linux'
