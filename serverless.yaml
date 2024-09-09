@@ -2,16 +2,16 @@ service: web-scraping
 
 provider:
   name: aws
+  timeout: 30
   ecr:
     images:
       selenium-chrome-driver:
         path: ./
   region: us-east-1
-  stage: prod
 
 functions:
   scraping:
     image:
       name: selenium-chrome-driver
-    events:
-      - schedule: cron(*/1 * * * ? *)
+    # events:
+    #   - schedule: cron(*/30 * * * ? *)
