@@ -13,9 +13,8 @@ functions:
   scraping:
     image:
       name: appimage
-    handler: handler.scraping  # Referência para o arquivo handler.py e a função 'scraping'
-  events:
-     schedule: cron(*/1 * * * ? *)
+    events:
+      schedule: cron(*/1 * * * ? *)
 
 plugins:
   - serverless-python-requirements  # Adiciona o plugin de Python para lidar com dependências
