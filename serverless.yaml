@@ -2,22 +2,24 @@ service: web-scraping
 
 provider:
   name: aws
-  runtime: python3.9  # Definido para Python 3.9, mas você pode ajustar conforme a versão necessária
+  ecr:
+    images:
+      selenium-chrome-driver:
+        path: ./
   region: us-east-1
   stage: prod
 
 functions:
   scraping:
+    image:
+      name: appimage
     handler: handler.scraping  # Referência para o arquivo handler.py e a função 'scraping'
-
-package:
-  exclude:
-    - node_modules/**
-    - venv/**  # Exclui o diretório virtualenv (caso use)
+  events:
+     schedule: cron(*/1 * * * ? *)
 
 plugins:
   - serverless-python-requirements  # Adiciona o plugin de Python para lidar com dependências
 
-custom:
-  pythonRequirements:
-    dockerizePip: true  # Usar contêiner Docker para instalar dependências nativas se necessário
+# custom:
+#   pythonRequirements:
+#     dockerizePip: true  # Usar contêiner Docker para instalar dependências nativas se necessário
