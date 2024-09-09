@@ -21,5 +21,4 @@ plugins:
 
 custom:
   pythonRequirements:
-    layer: true
-    # dockerizePip: true  # Usar contêiner Docker para instalar dependências nativas se necessário
+    dockerizePip: 'non-linux'
